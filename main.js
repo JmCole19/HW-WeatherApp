@@ -12,7 +12,7 @@ $(document).ready(function () {
     })
 
     function changeLocation() {
-        var queryURL = `http://api.openweathermap.org/data/2.5/weather?zip=${searchValue},us&appid=f17120984cd2d82d4bc796031344984c`
+        var queryURL = `http://api.openweathermap.org/data/2.5/weather?zip=${searchValue},us&mode=json&units=imperial&appid=f17120984cd2d82d4bc796031344984c`
 
         $.ajax({
             url: queryURL,
@@ -29,9 +29,9 @@ $(document).ready(function () {
 
     function createCard(response) {
         var createList = $("<ul>");
-        var displayTemp = $("<li>").text(`Current Temperature: ${response.main.temp}`);
-        var displayHigh = $("<li>").text(`High: ${response.main.temp_max}`);
-        var displayLow = $("<li>").text(`Low: ${response.main.temp_min}`);
+        var displayTemp = $("<li>").text(`Current Temperature: ${response.main.temp}° F`);
+        var displayHigh = $("<li>").text(`High: ${response.main.temp_max}° F`);
+        var displayLow = $("<li>").text(`Low: ${response.main.temp_min}° F`);
         var displayHumidity = $("<li>").text(`Humidity: ${response.main.humidity}`);
         var displayWind = $("<li>").text(`Wind Speed: ${response.wind.speed}MPH`);
 
@@ -50,15 +50,4 @@ $(document).ready(function () {
         cardContent.append(createList);
         createList.append(displayTemp, displayHigh, displayLow, displayHumidity, displayWind);
     };
-
-    function fiveDay() {
-        var queryURL = `http://api.openweathermap.org/data/2.5/forecast?zip=${searchValue},us&appid=f17120984cd2d82d4bc796031344984c`
-
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response)
-        })
-    }
-})
+});
