@@ -18,8 +18,10 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response)
-            var displayLocationName = $("<h2>").text(response.name)
-            $(".container").append(displayLocationName);
+
+            createCard(response);
+
+
         })
     }
 })
@@ -27,4 +29,28 @@ $(document).ready(function () {
 $("#refresh").on("click", function() {
     location.reload();
 })
+
+function createCard(response) {
+    var createList = $("<ul>");
+    var displayTemp = $("<li>").text(`Current Temperature: ${response.main.temp}`);
+    var displayHigh = $("<li>").text(`High: ${response.main.temp_max}`);
+    var displayLow = $("<li>").text(`Low: ${response.main.temp_min}`);
+    var displayHumidity = $("<li>").text(`Humidity: ${response.main.humidity}`);
+    var displayWind = $("<li>").text(`Wind Speed: ${response.wind.speed}MPH`);
+    
+    var firstDiv = $("<div>").addClass("row")
+    var secondDiv = $("<div>").addClass("col s12 m6")
+    var thirdDiv = $("<div>").addClass("card blue-grey darken-1")
+    var fourthDiv = $("<div>").addClass("card-content white-text")
+    var cardTitle = $("<span>").addClass("card-title").text(response.name)
+    var cardContent = $("<p>").addClass("information")
+
+    $(".container").append(firstDiv)
+    firstDiv.append(secondDiv) 
+    secondDiv.append(thirdDiv)
+    thirdDiv.append(fourthDiv)
+    fourthDiv.append(cardTitle, cardContent)
+    cardContent.append(createList);
+    createList.append(displayTemp, displayHigh, displayLow, displayHumidity, displayWind);
+};
 
