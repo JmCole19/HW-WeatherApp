@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <style>
@@ -29,18 +28,28 @@
         <div class="nav-wrapper yellow darken-3">
             <a href="#!" class="brand-logo"><i class="material-icons" style="margin-left: 5px;">wb_sunny</i>Weather</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html" class="search-toggle" data-selector="#header-1"><i class="material-icons">search</i></a></li>
-                <li><a href="badges.html"><i class="material-icons">event</i></a></li>
-                <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
-                <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+                <li><a class="searchbtn" href="#"><i class="material-icons">search</i></a></li>
+                <li><a href="#"><i class="material-icons">event</i></a></li>
+                <li><a href="#"><i class="material-icons">refresh</i></a></li>
+                <li><a href="#"><i class="material-icons">more_vert</i></a></li>
             </ul>
-            <form action="" class="search-box">
-                <input type="text" class="text search-input" placeholder="Type here to search..." />
-              </form>
         </div>
     </nav>
 
-    <div class="container">
+    <!-- search bar html -->
+    <div id="myOverlay" class="overlay">
+        <span class="closebtn" title="Close Overlay">x</span>
+        <div class="overlay-content">
+          <form action="action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+      <link rel="stylesheet" href="searchbar files/searchbar.css">
+      <script src="searchbar files/searchbar.js"></script>
+
+    <div class="container" style="z-index: 1;">
 
     </div>
 

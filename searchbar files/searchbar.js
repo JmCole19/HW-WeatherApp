@@ -1,9 +1,11 @@
-$('.dropdown-trigger').dropdown();
+$(document).ready(function () {
 
-function openSearch() {
+$(".searchbtn").on("click", function() {
     document.getElementById("myOverlay").style.display = "block";
-  }
-  
-  function closeSearch() {
+});
+
+$(".closebtn").on("click", function() {
     document.getElementById("myOverlay").style.display = "none";
-  }
+});
+
+})
