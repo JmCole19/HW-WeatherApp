@@ -17,6 +17,7 @@ $(document).ready(function () {
         document.getElementById("myOverlay").style.display = "none";
         $("#start").empty()
         $(".searchInput").val("")
+        $(".container").empty()
         changeLocation();
         // fiveDay();
     })
