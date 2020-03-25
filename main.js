@@ -1,6 +1,16 @@
 $(document).ready(function () {
     var submitSearchBtn = $("#submitSearchBtn");
     var searchValue;
+    var currentDate = moment().format("MM/DD/YYYY")
+    var futureDates = {
+        tomorrow: moment().add(1, "d").format("MM/DD/YYYY"),
+        twoDays: moment().add(2, "d").format("MM/DD/YYYY"),
+        threeDays: moment().add(3, "d").format("MM/DD/YYYY"),
+        fourDays: moment().add(4, "d").format("MM/DD/YYYY"),
+        fiveDays: moment().add(5, "d").format("MM/DD/YYYY")
+    };
+
+    console.log(futureDates);
 
     submitSearchBtn.on("click", function () {
         searchValue = $(".searchInput").val()
@@ -8,7 +18,7 @@ $(document).ready(function () {
         $("#start").empty()
         $(".searchInput").val("")
         changeLocation();
-        fiveDay();
+        // fiveDay();
     })
 
     function changeLocation() {
@@ -39,7 +49,7 @@ $(document).ready(function () {
         var secondDiv = $("<div>").addClass("col s12 m6")
         var thirdDiv = $("<div>").addClass("card blue-grey darken-1")
         var fourthDiv = $("<div>").addClass("card-content white-text")
-        var cardTitle = $("<span>").addClass("card-title").text(response.name)
+        var cardTitle = $("<span>").addClass("card-title").text(`${response.name} (${currentDate})`)
         var cardContent = $("<p>").addClass("information")
 
         $(".container").append(firstDiv)
