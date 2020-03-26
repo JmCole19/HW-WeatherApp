@@ -23,12 +23,13 @@ $(document).ready(function () {
     })
 
     function changeLocation() {
-        var queryURL = `http://api.openweathermap.org/data/2.5/weather?zip=${searchValue},us&mode=json&units=imperial&appid=f17120984cd2d82d4bc796031344984c`
+        var queryURL = `http://api.openweathermap.org/data/2.5/forecast?zip=${searchValue},us&mode=json&units=imperial&appid=f17120984cd2d82d4bc796031344984c`
 
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+            console.log(response)
             createCard(response);
         })
     }
@@ -40,17 +41,17 @@ $(document).ready(function () {
 
     function createCard(response) {
         var createList = $("<ul>");
-        var displayTemp = $("<li>").text(`Current Temperature: ${response.main.temp}° F`);
-        var displayHigh = $("<li>").text(`High: ${response.main.temp_max}° F`);
-        var displayLow = $("<li>").text(`Low: ${response.main.temp_min}° F`);
-        var displayHumidity = $("<li>").text(`Humidity: ${response.main.humidity}`);
-        var displayWind = $("<li>").text(`Wind Speed: ${response.wind.speed}MPH`);
+        var displayTemp = $("<li>").text(`Current Temperature: ${response.list[0].main.temp}° F`);
+        var displayHigh = $("<li>").text(`High: ${response.list[0].main.temp_max}° F`);
+        var displayLow = $("<li>").text(`Low: ${response.list[0].main.temp_min}° F`);
+        var displayHumidity = $("<li>").text(`Humidity: ${response.list[0].main.humidity}`);
+        var displayWind = $("<li>").text(`Wind Speed: ${response.list[0].wind.speed}MPH`);
 
         var firstDiv = $("<div>").addClass("row")
         var secondDiv = $("<div>").addClass("col s12 m6")
         var thirdDiv = $("<div>").addClass("card blue-grey darken-1")
         var fourthDiv = $("<div>").addClass("card-content white-text")
-        var cardTitle = $("<span>").addClass("card-title").text(`${response.name} (${currentDate})`)
+        var cardTitle = $("<span>").addClass("card-title").text(`${response.city.name} (${currentDate})`)
         var cardContent = $("<p>").addClass("information")
 
         $(".container").append(firstDiv)
